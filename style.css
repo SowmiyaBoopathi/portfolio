@@ -1,0 +1,817 @@
+/* Basic Reset & Body Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark-gray); /* Default text color */
+    background-color: var(--light-bg-main); /* Main light background */
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section Padding */
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: var(--light-bg-alt); /* Slightly off-white for alternating sections */
+}
+
+/* Color Variables: Black and Purple Palette */
+:root {
+    --primary-purple: #8A2BE2; /* A vibrant, eye-catching purple */
+    --dark-charcoal-black: #1A1A1A; /* Very dark charcoal, close to black */
+    --medium-black: #2C2C2C; /* Slightly lighter black for accents/backgrounds */
+    --light-bg-main: #FDFDFD; /* Near-white background */
+    --light-bg-alt: #F5F5F5; /* Very light gray for alternate sections */
+    --text-dark-gray: #333333; /* Dark gray for general text */
+    --text-medium-gray: #555555; /* Medium gray for secondary text/labels */
+    --text-light-gray: #777777; /* Lighter gray for descriptions */
+    --white: #FFFFFF;
+    --border-color: #E0E0E0; /* Light border color for forms */
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.2);
+}
+
+
+/* Headings */
+h1, h2, h3 {
+    font-weight: 700;
+    color: var(--dark-charcoal-black); /* Set headings to black/near-black */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3.8em;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 2.8em;
+    margin-bottom: 50px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-purple); /* Purple accent for underline */
+    border-radius: 5px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-purple); /* Purple for links */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #6A1EB9; /* Darker purple on hover */
+}
+
+.highlight {
+    color: var(--primary-purple); /* Purple highlight */
+}
+
+/* Buttons */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--primary-purple); /* Purple button */
+    color: var(--white);
+    padding: 14px 30px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 25px;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(138, 43, 226, 0.25); /* Purple shadow */
+}
+
+.btn-primary:hover {
+    background-color: #6A1EB9; /* Darker purple */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(138, 43, 226, 0.35);
+}
+
+.btn-secondary {
+    display: inline-block;
+    border: 2px solid var(--primary-purple); /* Purple border */
+    color: var(--primary-purple); /* Purple text */
+    padding: 12px 25px;
+    border-radius: 8px;
+    transition: all 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-purple); /* Purple background on hover */
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: var(--dark-charcoal-black); /* Black navbar */
+    color: var(--white);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 3px 10px var(--shadow-medium);
+    transition: background-color 0.3s ease;
+}
+
+.navbar.sticky {
+    background-color: rgba(26, 26, 26, 0.95); /* Slightly transparent black when sticky */
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--white); /* White logo on black background */
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 35px;
+}
+
+.nav-links a {
+    color: var(--white); /* White nav links */
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-purple); /* Purple on hover */
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 3px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-purple); /* Purple underline on hover */
+    transition: width 0.3s ease-out;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.burger-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 1001;
+}
+
+.burger-menu div {
+    width: 28px;
+    height: 3px;
+    background-color: var(--white); /* White lines for burger menu */
+    margin: 6px 0;
+    transition: all 0.3s ease;
+}
+
+/* Header & Hero Section */
+#home {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--white); /* Set background to white */
+    color: var(--text-dark-gray); /* Default text color - overridden by more specific rules */
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    max-width: 800px;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid var(--primary-purple); /* Purple border for profile picture */
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); /* Subtle shadow on white background */
+}
+
+
+#home h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+    color: var(--dark-charcoal-black); /* Set name text to black */
+    text-shadow: none; /* Remove text shadow for better readability on white */
+}
+
+#home .tagline {
+    font-size: 1.8em;
+    color: var(--text-medium-gray); /* Keep tagline in a slightly lighter color */
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+#home .intro-message {
+    font-size: 1.2em;
+    color: var(--text-light-gray); /* Keep intro message in a lighter color */
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.social-links {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.social-links a {
+    color: var(--dark-charcoal-black); /* Set social icons to black */
+    font-size: 2.2em;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-8px) scale(1.1);
+    color: var(--primary-purple); /* Purple on hover */
+}
+
+/* About Section */
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 320px;
+    max-width: 600px;
+    text-align: left;
+}
+
+.about-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: var(--text-medium-gray);
+}
+
+.about-text h3 {
+    text-align: left;
+    margin-top: 30px;
+    color: var(--dark-charcoal-black); /* Black for about subheadings */
+}
+
+.about-text ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.2rem;
+}
+
+.about-text ul li {
+    font-size: 1.05rem;
+    color: var(--text-medium-gray);
+    margin-bottom: 0.5rem;
+}
+
+.about-text ul li strong {
+    color: var(--dark-charcoal-black); /* Black for strong text in about */
+}
+
+.about-image {
+    flex: 1;
+    min-width: 280px;
+    text-align: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px var(--shadow-medium);
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 35px;
+    text-align: center;
+}
+
+.skill-item {
+    background-color: var(--white);
+    padding: 35px 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+}
+
+.skill-item:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 12px 30px var(--shadow-medium);
+}
+
+.skill-item i {
+    font-size: 4em;
+    color: var(--primary-purple); /* Purple for skill icons */
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.skill-item:hover i {
+    color: #6A1EB9; /* Darker purple on hover */
+}
+
+.skill-item h3 {
+    font-size: 1.3em;
+    margin-bottom: 0;
+    color: var(--text-dark-gray);
+}
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.project-item {
+    background-color: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-item:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 12px 30px var(--shadow-medium);
+}
+
+.project-item img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.project-item:hover img {
+    transform: scale(1.03);
+}
+
+.project-item h3 {
+    font-size: 1.7em;
+    margin: 25px 25px 15px;
+    text-align: left;
+    color: var(--text-dark-gray);
+}
+
+.project-item p {
+    padding: 0 25px 20px;
+    flex-grow: 1;
+    color: var(--text-light-gray);
+}
+
+.project-links {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 0 25px 25px;
+}
+
+.btn-project {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--primary-purple); /* Purple project buttons */
+    color: var(--white);
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-project:hover {
+    background-color: #6A1EB9; /* Darker purple */
+}
+.btn-project i {
+    font-size: 0.9em;
+}
+
+/* Achievements Section */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+.achievement-card {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.achievement-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px var(--shadow-medium);
+}
+
+.achievement-card i {
+    font-size: 3.5em;
+    color: var(--primary-purple); /* Purple for achievement icons */
+    margin-bottom: 20px;
+}
+
+.achievement-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: var(--dark-charcoal-black); /* Black for achievement headings */
+}
+
+.achievement-card p {
+    font-size: 1em;
+    color: var(--text-light-gray);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Contact Section */
+.contact-intro {
+    text-align: center;
+    font-size: 1.3em;
+    margin-bottom: 50px;
+    color: var(--text-medium-gray);
+}
+
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;
+}
+
+.contact-form {
+    flex: 2;
+    min-width: 350px;
+    max-width: 700px;
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px var(--shadow-light);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--text-medium-gray);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1.05em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-purple); /* Purple border on focus */
+    box-shadow: 0 0 0 4px rgba(138, 43, 226, 0.25);
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.contact-info { /* Original class name from prior context */
+    flex: 1;
+    min-width: 280px;
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px var(--shadow-light);
+}
+
+.contact-info-block { /* This was the explicit class in your HTML */
+    flex: 1;
+    min-width: 280px;
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px var(--shadow-light);
+}
+
+
+.contact-info p, .contact-info-block p { /* Targeting both for safety */
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.15em;
+    color: var(--text-medium-gray);
+}
+
+.contact-info p i, .contact-info-block p i { /* Targeting both for safety */
+    margin-right: 15px;
+    color: var(--primary-purple); /* Purple contact icons */
+    font-size: 1.5em;
+}
+
+.social-links-contact {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.social-links-contact a {
+    color: var(--text-medium-gray);
+    font-size: 2.5em;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-links-contact a:hover {
+    color: var(--primary-purple); /* Purple on hover */
+    transform: translateY(-5px);
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-charcoal-black); /* Black footer */
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 40px 0;
+    font-size: 0.95em;
+}
+
+footer p {
+    margin-bottom: 12px;
+}
+
+footer a {
+    color: var(--primary-purple); /* Purple links in footer */
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design (remains the same as layout is preserved) */
+@media (max-width: 992px) {
+    h1 {
+        font-size: 3em;
+    }
+    h2 {
+        font-size: 2.2em;
+    }
+    .profile-pic {
+        width: 160px;
+        height: 160px;
+    }
+    .nav-links li {
+        margin-left: 20px;
+    }
+    .about-content,
+    .contact-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .about-text,
+    .about-image,
+    .contact-form,
+    .contact-info, /* Targeting both for safety */
+    .contact-info-block {
+        min-width: unset;
+        width: 100%;
+    }
+    .section-padding {
+        padding: 60px 0;
+    }
+    .projects-grid, .skills-grid, .achievements-grid {
+        gap: 25px;
+    }
+    .project-item img {
+        height: 200px;
+    }
+    .contact-form, .contact-info, .contact-info-block { /* Targeting all for safety */
+        padding: 30px;
+    }
+    .social-links-contact a {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        background-color: var(--dark-charcoal-black); /* Black for mobile nav background */
+        box-shadow: 0 2px 5px var(--shadow-light);
+        padding: 20px 0;
+        text-align: center;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(100%);
+    }
+
+    .navbar .nav-links.nav-active {
+        display: flex;
+        transform: translateX(0%);
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+        opacity: 0;
+    }
+
+    .nav-links.nav-active li {
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out forwards;
+    }
+
+    .nav-links.nav-active li:nth-child(1) { transition-delay: 0.1s; }
+    .nav-links.nav-active li:nth-child(2) { transition-delay: 0.2s; }
+    .nav-links.nav-active li:nth-child(3) { transition-delay: 0.3s; }
+    .nav-links.nav-active li:nth-child(4) { transition-delay: 0.4s; }
+    .nav-links.nav-active li:nth-child(5) { transition-delay: 0.5s; }
+    .nav-links.nav-active li:nth-child(6) { transition-delay: 0.6s; }
+
+
+    .burger-menu {
+        display: block;
+    }
+
+    #home {
+        min-height: 80vh;
+        padding-top: 70px;
+    }
+
+    #home h1 {
+        font-size: 2.8em;
+    }
+
+    #home .tagline {
+        font-size: 1.4em;
+    }
+
+    h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    .section-padding {
+        padding: 40px 0;
+    }
+
+    .skill-item {
+        padding: 25px 15px;
+    }
+    .skill-item i {
+        font-size: 3em;
+    }
+    .project-item img {
+        height: 180px;
+    }
+    .contact-form, .contact-info, .contact-info-block { /* Targeting all for safety */
+        padding: 30px;
+    }
+    .social-links-contact a {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    #home h1 {
+        font-size: 2.2em;
+    }
+    #home .tagline {
+        font-size: 1.1em;
+    }
+    .profile-pic {
+        width: 140px;
+        height: 140px;
+    }
+    h2 {
+        font-size: 1.8em;
+    }
+    .btn-primary, .btn-secondary {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+    .social-links a {
+        font-size: 1.8em;
+        margin: 0 10px;
+    }
+    .skill-item {
+        min-width: 120px;
+        font-size: 0.9em;
+    }
+    .skill-item i {
+        font-size: 2.5em;
+    }
+    .project-item h3 {
+        font-size: 1.4em;
+    }
+    .btn-project {
+        padding: 6px 12px;
+        font-size: 0.85em;
+    }
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Burger Menu Animation */
+.burger-menu.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.burger-menu.toggle .line2 {
+    opacity: 0;
+}
+.burger-menu.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
